@@ -131,7 +131,7 @@ public class ItemViewActivity extends FragmentActivity {
 			startActivity(intent2);
 			return true;
 		case R.id.single_delete:
-
+//
 			dao.deleteNoteById(IDs.get(pager.getCurrentItem()));
 			Intent intent1 = new Intent(getApplicationContext(),
 					MainActivity.class);
