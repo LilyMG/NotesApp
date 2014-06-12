@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:showAsAction="always"
+        android:title="more">
+        <menu>
+            <item
+                android:id="@+id/delete_selecteds"
+                android:title="delete selecteds"/>
+            <item
+                android:id="@+id/select_all"
+                android:title="select all"/>
+            <item
+                android:id="@+id/show_hide_notes_from_action_mode"
+                android:title="show hidden notes"
+                android:checkable="true"
+                android:checked="true"/>
+            <item
+                android:id="@+id/change_selected_notes"
+                android:title="show/hide selected notes"/>
+        </menu>
+    </item>
+
+
+</menu>
