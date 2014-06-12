@@ -123,7 +123,7 @@ public class ItemViewActivity extends FragmentActivity {
 			EditText editTextDesc = (EditText) findViewById(R.id.textViewDesc);
 			description = editTextDesc.getText().toString();
 			if (id != null && f != null) {
-			dao.editNoteById(id, title, description);
+				dao.editNoteById(id, title, description);
 				// f.onPause();
 			}
 			Intent intent2 = new Intent(getApplicationContext(),
@@ -131,31 +131,50 @@ public class ItemViewActivity extends FragmentActivity {
 			startActivity(intent2);
 			return true;
 		case R.id.single_delete:
-//here are the added comments
-			dao.deleteNoteById(IDs.get(pager.getCurrentItem()));
+			try {
+				// here are the added comments
+				dao.deleteNoteById(IDs.get(pager.getCurrentItem()));
+			} catch (IndexOutOfBoundsException e) {
+				dao.deleteNoteById(id);
+			}
 			Intent intent1 = new Intent(getApplicationContext(),
 					MainActivity.class);
 			startActivity(intent1);
 			return true;
 		case R.id.show_hide_from_single_note:
 			// TODO add mode listener
-			try {
-				dao.changeTypeHiddenShowed(IDs.get(pager.getCurrentItem()));
-				pageAdapter.notifyDataSetChanged();
-				// IDs.remove(pager.getCurrentItem());
-			} catch (IndexOutOfBoundsException e) {
-				System.out.println("array index exception");
-				e.printStackTrace();
+			EditText editTextTitle1 = (EditText) findViewById(R.id.textViewTitle);
+			title = editTextTitle1.getText().toString();
+			EditText editTextDesc1 = (EditText) findViewById(R.id.textViewDesc);
+			description = editTextDesc1.getText().toString();
+			if (id != null) {
+				dao.deleteNoteById(id);
+				String justAdded = dao.addNote(title, description);
 				try {
-					dao.changeTypeHiddenShowed(id);
-					pageAdapter.notifyDataSetChanged();
-				} catch (Exception e1) {
-	
-					e1.printStackTrace();
+					dao.changeTypeHiddenShowed(justAdded);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				break;
-			} catch (IOException e) {
+			} else {
+				try {
+					dao.changeTypeHiddenShowed(IDs.get(pager.getCurrentItem()));
+					pageAdapter.notifyDataSetChanged();
+					// IDs.remove(pager.getCurrentItem());
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("array index exception");
+					e.printStackTrace();
+					try {
+						dao.changeTypeHiddenShowed(id);
+						pageAdapter.notifyDataSetChanged();
+					} catch (Exception e1) {
 
+						e1.printStackTrace();
+					}
+					break;
+				} catch (IOException e) {
+
+				}
 			}
 			item.setEnabled(false);
 			System.out.println("show/hide textview");
