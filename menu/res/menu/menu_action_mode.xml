@@ -6,7 +6,7 @@
         <menu>
             <item
                 android:id="@+id/delete_selecteds"
-                android:title="delete selecteds"/>
+                android:title="delete"/>
             <item
                 android:id="@+id/select_all"
                 android:title="select all"/>
@@ -17,7 +17,7 @@
                 android:checked="true"/>
             <item
                 android:id="@+id/change_selected_notes"
-                android:title="show/hide selected notes"/>
+                android:title="show/hide"/>
         </menu>
     </item>
 
