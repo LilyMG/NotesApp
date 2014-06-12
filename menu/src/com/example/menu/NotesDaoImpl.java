@@ -51,12 +51,13 @@ public class NotesDaoImpl implements NotesDao {
 	}
 
 	@Override
-	public void deleteNoteById(String id) {
+	public boolean deleteNoteById(String id) {
 
 		File fileToDelete = new File(appPath.concat("/" + id));
 		boolean deleted = fileToDelete.delete();
 		System.out.println("deleted is: " + deleted + " file exists: "
 				+ fileToDelete.exists());
+		return deleted;
 	}
 
 	@Override

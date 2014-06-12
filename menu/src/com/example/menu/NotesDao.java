@@ -7,7 +7,7 @@ public interface NotesDao {
 	
 	//TODO write in lowercase
 	
-	public void deleteNoteById(String id);
+	public boolean deleteNoteById(String id);
 
 	public String addNote(String title, String description);
 

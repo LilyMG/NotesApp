@@ -188,7 +188,7 @@ public class MainActivity extends Activity {
 					System.out.println("selected items are : "
 							+ selectedIds.toString());
 					if (selectedIds.size() == 1) {
-						actionMode.setTitle(selectedIds.size() + " is selected");
+						actionMode.setTitle(selectedIds.size() + " are selected");
 					} else {
 						actionMode.setTitle(selectedIds.size()
 								+ " are selected");

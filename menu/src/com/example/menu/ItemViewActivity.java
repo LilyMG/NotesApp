@@ -68,14 +68,17 @@ public class ItemViewActivity extends FragmentActivity {
 				description = editTextDesc.getText().toString();
 				if (id != null && f != null
 						&& pager.getCurrentItem() == fList.size() - 1) {
-					dao.deleteNoteById(id);
-					dao.addNote(title, description);
+					if (dao.deleteNoteById(id)) {
+						dao.addNote(title, description);
+					}
+
+					System.out.println("another add");
 				}
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-
+				IDs = dao.getAllIds();
 				String type = IDs.get(pager.getCurrentItem());
 				// TODO ara durrrrrrrrrrrum....id-n nuynn e amen angam!!!!!
 				if (type.startsWith("_")) {
@@ -84,8 +87,9 @@ public class ItemViewActivity extends FragmentActivity {
 					menu.getItem(0).setTitle("hide");
 				}
 				menu.getItem(0).setEnabled(true);
-				System.out.println("menu item is " + menu.getItem(0)
-						+ " id is : " + IDs.get(pager.getCurrentItem()));
+				// System.out.println("menu item is " + menu.getItem(0)
+				// + " id is : " + IDs.get(pager.getCurrentItem()));
+				System.out.println("add");
 
 			}
 		});
@@ -147,8 +151,8 @@ public class ItemViewActivity extends FragmentActivity {
 			title = editTextTitle1.getText().toString();
 			EditText editTextDesc1 = (EditText) findViewById(R.id.textViewDesc);
 			description = editTextDesc1.getText().toString();
-			if (id != null) {
-				dao.deleteNoteById(id);
+			if (id != null && dao.deleteNoteById(id)) {
+				
 				String justAdded = dao.addNote(title, description);
 				try {
 					dao.changeTypeHiddenShowed(justAdded);
