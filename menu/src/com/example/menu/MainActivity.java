@@ -360,6 +360,8 @@ public class MainActivity extends Activity {
 		startActivity(homeIntent);
 		//super.onBackPressed();
 	}
+
+	
 	
 	
 }
