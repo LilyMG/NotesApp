@@ -80,7 +80,6 @@ public class ItemViewActivity extends FragmentActivity {
 			public void onPageScrollStateChanged(int arg0) {
 				IDs = dao.getAllIds();
 				String type = IDs.get(pager.getCurrentItem());
-				// TODO ara durrrrrrrrrrrum....id-n nuynn e amen angam!!!!!
 				if (type.startsWith("_")) {
 					menu.getItem(0).setTitle("show");
 				} else {
