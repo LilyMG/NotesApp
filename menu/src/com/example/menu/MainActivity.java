@@ -221,18 +221,18 @@ public class MainActivity extends Activity {
 			switch (containsHiddenNotes(selectedIds)) {
 			case 0:
 				menu.getItem(0).getSubMenu().getItem(3)
-						.setTitle("show/hide selected notes");
+						.setTitle("show/hide ");
 				menu.getItem(0).getSubMenu().getItem(3).setEnabled(false);
 				break;
 			case 1:
 				menu.getItem(0).getSubMenu().getItem(3).setEnabled(true);
 				menu.getItem(0).getSubMenu().getItem(3)
-						.setTitle("hide selected notes");
+						.setTitle("hide");
 				break;
 			case 2:
 				menu.getItem(0).getSubMenu().getItem(3).setEnabled(true);
 				menu.getItem(0).getSubMenu().getItem(3)
-						.setTitle("show selected note");
+						.setTitle("show");
 				break;
 			}
 
